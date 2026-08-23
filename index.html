@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>PORTEO · Portail candidats · Côte d'Ivoire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&family=Montserrat:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: #f0f6fc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: #0b2b3b;
+      line-height: 1.5;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      background: #0A73CE;  /* Bleu PORTEO */
+      color: white;
+      padding: 0.5rem 1rem;
+      border-bottom: 6px solid #E80D2B;  /* Rouge PORTEO */
+      box-shadow: 0 4px 20px rgba(10, 115, 206, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: #E80D2B;
+      border-radius: 0 0 4px 4px;
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem 1rem;
+    }
+   .logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo-img {
+  height: 52px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  display: block;
+  transition: 0.2s;
+}
+
+/* Fallback si l'image est manquante */
+.logo-fallback {
+  font-size: 2.2rem;
+  color: white;
+  background: rgba(255, 255, 255, 0.10);
+  padding: 0.2rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 900;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 3px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  display: none;
+}
+
+.logo-text h1 {
+  font-size: 1.7rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.logo-text h1 span {
+  color: #FADD05;  /* Jaune */
+}
+
+.logo-text p {
+  font-size: 0.55rem;
+  opacity: 0.9;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 2px;
+  color: #c0e0f0;
+  font-weight: 500;
+}
+    .badge-recrutement {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      white-space: nowrap;
+      color: #ffffff;
+    }
+    .badge-recrutement i { margin-right: 0.4rem; color: #FADD05; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #0A73CE;
+      color: #c0e0f0;
+      padding: 1.2rem 1.5rem;
+      margin-top: 3rem;
+      font-size: 0.75rem;
+      border-top: 6px solid #E80D2B;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .footer a { color: #FADD05; text-decoration: none; font-weight: 500; }
+    .footer a:hover { text-decoration: underline; }
+
+    /* ===== MAIN ===== */
+    .main-container {
+      flex: 1;
+      max-width: 900px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+      width: 100%;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 20px 40px -12px rgba(10, 115, 206, 0.25);
+      overflow: hidden;
+      border: 1px solid rgba(10, 115, 206, 0.08);
+    }
+
+    /* ===== CONGRATS ===== */
+    .congrats-header {
+      background: linear-gradient(135deg, #e6f0fa 0%, #d4e5f5 100%);
+      padding: 2rem 2rem;
+      border-bottom: 4px solid #E80D2B;
+      position: relative;
+    }
+    .congrats-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0A73CE;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-family: "Montserrat", sans-serif;
+    }
+    .congrats-title i {
+      color: #E80D2B;
+      font-size: 2rem;
+    }
+    .congrats-sub {
+      font-size: 1rem;
+      color: #1a4a5a;
+      margin: 0.6rem 0 1.2rem;
+    }
+    .congrats-sub strong {
+      color: #0A73CE;
+    }
+
+    .btn-form-access {
+      background: #0A73CE;
+      border: none;
+      color: white;
+      padding: 0.9rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px -8px rgba(10, 115, 206, 0.5);
+      transition: 0.2s;
+    }
+    .btn-form-access:hover {
+      background: #0984e0;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -8px rgba(10, 115, 206, 0.6);
+    }
+    .btn-form-access i {
+      color: #FADD05;
+    }
+
+    /* ===== FORM ===== */
+    .form-section { padding: 1.8rem 1.8rem; }
+    .hidden { display: none !important; }
+
+    .step-indicator {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid #dce8ee;
+      padding-bottom: 1rem;
+    }
+    .step {
+      font-weight: 500;
+      color: #8aa0b0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+    }
+    .step.active {
+      color: #0A73CE;
+      font-weight: 700;
+    }
+    .step.active i {
+      color: #E80D2B;
+    }
+    .step i { font-size: 1.1rem; }
+
+    .form-page { animation: fade 0.25s ease; }
+    @keyframes fade {
+      from { opacity: 0.3; transform: translateX(8px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .form-row { margin-bottom: 1.3rem; }
+    label {
+      font-weight: 600;
+      color: #0A73CE;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.92rem;
+    }
+    .required:after {
+      content: " *";
+      color: #E80D2B;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      border: 2px solid #d0dce6;
+      border-radius: 16px;
+      font-size: 1rem;
+      background: white;
+      transition: 0.2s;
+      font-family: "Inter", sans-serif;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #0A73CE;
+      box-shadow: 0 0 0 4px rgba(10, 115, 206, 0.1);
+      outline: none;
+    }
+    textarea { resize: vertical; min-height: 60px; }
+
+    .flex-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f5f8fc;
+      padding: 0.6rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid #d0dce6;
+      cursor: pointer;
+      transition: 0.15s;
+      font-size: 0.95rem;
+    }
+    .radio-option:hover {
+      border-color: #E80D2B;
+      background: #f0faf5;
+    }
+    .radio-option input[type="radio"] {
+      width: auto;
+      padding: 0;
+      margin: 0;
+      accent-color: #E80D2B;
+    }
+
+    /* ===== PAIEMENT ===== */
+    .paiement-cadre {
+      background: #f5fafc;
+      border: 2px solid #E80D2B;
+      border-radius: 24px;
+      padding: 1.5rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .paiement-cadre h4 {
+      color: #0A73CE;
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 1.05rem;
+    }
+    .paiement-cadre h4 i {
+      color: #E80D2B;
+    }
+    .paiement-cadre p {
+      color: #1a3a4a;
+      font-size: 0.95rem;
+    }
+
+    /* ===== NUMERO AVEC BOUTON COPIER ===== */
+    .numero-wave-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: white;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      border: 2px solid #0A73CE;
+      margin: 0.5rem 0 0.5rem 0;
+      flex-wrap: wrap;
+    }
+    .numero-wave-container .numero-wave {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0A73CE;
+      font-family: "Montserrat", sans-serif;
+      letter-spacing: 1px;
+      flex: 1;
+    }
+    .btn-copier-wave {
+      background: #0A73CE;
+      color: white;
+      border: none;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+      white-space: nowrap;
+      font-family: "Inter", sans-serif;
+    }
+    .btn-copier-wave:hover {
+      background: #0984e0;
+      transform: scale(1.02);
+    }
+    .btn-copier-wave i {
+      color: #FADD05;
+    }
+    .btn-copier-wave.copie {
+      background: #1a7a5a;
+    }
+    .btn-copier-wave.copie i {
+      color: #a0e0c0;
+    }
+
+    .file-upload-box {
+      background: white;
+      border: 2px dashed #E80D2B;
+      border-radius: 20px;
+      padding: 1.2rem;
+      text-align: center;
+      margin: 1rem 0;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .file-upload-box:hover {
+      background: #f0faf5;
+      border-color: #c00a22;
+    }
+    .file-upload-box i {
+      font-size: 2.2rem;
+      color: #E80D2B;
+    }
+    .file-name {
+      font-size: 0.9rem;
+      background: #eef2f8;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #1a3a4a;
+    }
+
+    .info-securite-sociale {
+      background: #eef6fa;
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+      font-size: 0.95rem;
+      border-left: 5px solid #E80D2B;
+      margin-top: 1rem;
+    }
+    .info-securite-sociale i {
+      color: #E80D2B;
+    }
+
+    .info-box {
+      background: #f5f8fc;
+      padding: 1rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      border-left: 4px solid #E80D2B;
+    }
+    .info-box i {
+      color: #E80D2B;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-nav, .btn-primary {
+      border: none;
+      font-weight: 600;
+      padding: 0.7rem 1.6rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.15s;
+      white-space: nowrap;
+      font-family: "Inter", sans-serif;
+    }
+    .btn-nav {
+      background: white;
+      border: 2px solid #0A73CE;
+      color: #0A73CE;
+    }
+    .btn-nav:hover:not(:disabled) {
+      background: #e6f0f8;
+    }
+    .btn-nav:disabled {
+      opacity: 0.35;
+      border-color: #b0c8d0;
+      pointer-events: none;
+    }
+    .btn-primary {
+      background: #0A73CE;
+      color: white;
+      border: 2px solid #0A73CE;
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: #0984e0;
+    }
+    .btn-primary:disabled {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .btn-primary i {
+      color: #FADD05;
+    }
+
+    .navigation-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      border-top: 2px solid #dce8ee;
+      padding-top: 1.5rem;
+    }
+
+    /* ===== ERRORS ===== */
+    .error-message {
+      color: #c0392b;
+      font-size: 0.85rem;
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #fdeaea;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+    }
+    .error-message i { color: #c0392b; }
+    .input-error {
+      border-color: #c0392b !important;
+      background-color: #fef8f8;
+    }
+
+    /* ===== LOADER ===== */
+    #loaderOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 115, 206, 0.96);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      gap: 1.5rem;
+    }
+    .loader-spinner {
+      width: 68px;
+      height: 68px;
+      border: 6px solid rgba(255,255,255,0.15);
+      border-top-color: #FADD05;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loader-icon {
+      font-size: 3.5rem;
+      color: #FADD05;
+      animation: float 1.2s ease-in-out infinite alternate;
+      font-weight: 900;
+      font-family: "Montserrat", sans-serif;
+      letter-spacing: 4px;
+    }
+    @keyframes float { from { transform: translateY(-8px); } to { transform: translateY(8px); } }
+    .loader-text { color: white; font-size: 1.15rem; font-weight: 600; text-align: center; }
+    .loader-sub { color: rgba(255,255,255,0.7); font-size: 0.88rem; text-align: center; }
+
+    /* ===== CONFIRMATION ===== */
+    #confirmationPage {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      z-index: 10000;
+      padding: 2rem 1rem;
+      overflow-y: auto;
+    }
+    #confirmationPage.active {
+      display: flex;
+    }
+    .confirmation-card {
+      background: white;
+      border-radius: 40px;
+      box-shadow: 0 25px 45px -12px rgba(10, 115, 206, 0.4);
+      overflow: hidden;
+      max-width: 650px;
+      width: 100%;
+      animation: fadeInUp 0.5s ease-out;
+      margin: auto;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .confirmation-header {
+      background: linear-gradient(135deg, #0A73CE 0%, #085a9e 100%);
+      padding: 2rem;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    .confirmation-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #E80D2B;
+    }
+    .confirmation-icon {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      animation: pulse 0.6s ease-in-out;
+      color: #FADD05;
+    }
+    @keyframes pulse {
+      0% { transform: scale(0.8); opacity: 0; }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .confirmation-header h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-family: "Montserrat", sans-serif;
+    }
+    .confirmation-header p {
+      font-size: 1rem;
+      opacity: 0.95;
+    }
+    .confirmation-body { padding: 2rem; }
+    .info-box-confirm {
+      background: #f0f8fc;
+      border-radius: 24px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid #E80D2B;
+    }
+    .info-box-confirm h3 {
+      color: #0A73CE;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2rem;
+      font-family: "Montserrat", sans-serif;
+    }
+    .info-box-confirm ul { list-style: none; padding-left: 0; }
+    .info-box-confirm li {
+      padding: 0.7rem 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #dce8f0;
+    }
+    .info-box-confirm li:last-child { border-bottom: none; }
+    .info-box-confirm li i { color: #E80D2B; width: 24px; font-size: 1.1rem; }
+
+    .warning-box {
+      background: #f5fafc;
+      border-radius: 20px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #E80D2B;
+    }
+    .warning-box i { font-size: 1.8rem; color: #E80D2B; }
+    .warning-box p { color: #1a3a4a; font-size: 0.9rem; }
+    .warning-box strong { color: #0A73CE; }
+
+    .btn-close-confirm {
+      background: #0A73CE;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      width: 100%;
+      justify-content: center;
+      transition: 0.2s;
+      font-family: "Inter", sans-serif;
+      margin-top: 0.5rem;
+    }
+    .btn-close-confirm:hover {
+      background: #0984e0;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -5px rgba(10, 115, 206, 0.4);
+    }
+    .btn-close-confirm i { color: #FADD05; }
+
+    .btn-retour-accueil {
+      background: #eef2f8;
+      color: #1a2a3a;
+      border: 2px solid #d0dce6;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      width: 100%;
+      justify-content: center;
+      transition: 0.2s;
+      font-family: "Inter", sans-serif;
+      margin-top: 0.8rem;
+    }
+    .btn-retour-accueil:hover {
+      background: #dce8ee;
+      transform: translateY(-2px);
+    }
+    .btn-retour-accueil i { color: #0A73CE; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .navigation-buttons { flex-direction: column; align-items: stretch; }
+      .btn-nav, .btn-primary { justify-content: center; width: 100%; }
+      .step-indicator { font-size: 0.7rem; gap: 0.3rem 0.8rem; }
+      .congrats-title { font-size: 1.4rem; }
+      .form-section { padding: 1.2rem; }
+      .header-container { gap: 0.4rem; }
+      .logo-text h1 { font-size: 1.3rem; }
+      .logo-text p { font-size: 0.5rem; }
+      .confirmation-header h2 { font-size: 1.4rem; }
+      .confirmation-body { padding: 1.5rem; }
+      .info-box-confirm li { font-size: 0.9rem; }
+      .warning-box { flex-direction: column; text-align: center; }
+      .numero-wave-container { flex-direction: column; align-items: stretch; }
+      .btn-copier-wave { justify-content: center; }
+      .logo-img { height: 40px; }
+    }
+
+    .logo-img {
+    width: 160px;
+    height: 70px;
+    object-fit: contain;
+    display: block;
+    background: transparent;
+}
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-area">
+        <!-- Logo PORTEO -->
+        <img src="image\pt.webp"
+     alt="Logo PORTEO"
+     class="logo-img"
+     id="logoImg"
+     onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='inline-flex';">
+        <span class="logo-fallback" id="logoFallback">PORTEO</span>
+        <div class="logo-text">
+          <h1>PORTEO <span>BTP</span></h1>
+          <p>Bâtiment · Travaux Publics · Côte d'Ivoire</p>
+        </div>
+      </div>
+      <span class="badge-recrutement"><i class="fas fa-user-check"></i> Recrutement · Stagiaires & CDI</span>
+    </div>
+  </header>
+
+  <!-- ===== LOADER ===== -->
+  <div id="loaderOverlay" class="hidden">
+    <div class="loader-icon">PORTEO</div>
+    <div class="loader-spinner"></div>
+    <div class="loader-text">Enregistrement en cours…</div>
+    <div class="loader-sub">Veuillez patienter, votre dossier est en cours de traitement</div>
+  </div>
+
+  <!-- ===== CONFIRMATION ===== -->
+  <div id="confirmationPage">
+    <div class="confirmation-card">
+      <div class="confirmation-header">
+        <div class="confirmation-icon"><i class="fas fa-check-circle"></i></div>
+        <h2>Inscription enregistrée !</h2>
+        <p id="confirmMessage">Votre dossier a bien été transmis à la Direction des RH de PORTEO</p>
+      </div>
+      <div class="confirmation-body">
+        <div class="info-box-confirm">
+          <h3><i class="fas fa-envelope"></i> Prochaines étapes</h3>
+          <ul>
+            <li><i class="fas fa-check"></i> Votre dossier est en cours de vérification par nos services</li>
+            <li><i class="fas fa-clock"></i> Sous 24h, vous recevrez un email de confirmation</li>
+            <li><i class="fas fa-file-alt"></i> Les documents seront examinés par la Direction des RH de PORTEO</li>
+            <li><i class="fas fa-calendar-check"></i> Vous serez convoqué pour un entretien si votre dossier est complet</li>
+          </ul>
+        </div>
+        <div class="warning-box">
+          <i class="fas fa-info-circle"></i>
+          <p><strong>Information importante :</strong> Si vous n'avez pas reçu d'email dans les 48h, veuillez vérifier vos spams ou contacter la Direction des RH de PORTEO BTP par WhatsApp au <strong>+225 05 01 25 72 23</strong>.</p>
+        </div>
+        <button class="btn-close-confirm" onclick="closeConfirmation()">
+          <i class="fas fa-arrow-left"></i> Retour au formulaire
+        </button>
+        <button class="btn-retour-accueil" onclick="retourAccueil()">
+          <i class="fas fa-home"></i> Retour à l'accueil
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main-container">
+    <div class="card" id="mainCard">
+
+      <!-- CONGRATS -->
+      <div id="congratsBlock" class="congrats-header">
+        <div class="congrats-title">
+          <i class="fas fa-check-circle"></i> Félicitations, vous êtes sélectionné !
+        </div>
+        <div class="congrats-sub">
+          Votre candidature a été retenue par <strong>PORTEO BTP</strong>.<br>
+          Pour finaliser votre pré‑enregistrement, veuillez compléter le dossier en ligne.
+        </div>
+        <button id="showFormBtn" class="btn-form-access">
+          <i class="fas fa-file-signature"></i> Accéder au formulaire
+        </button>
+      </div>
+
+      <!-- FORM -->
+      <div id="formContainer" class="form-section hidden">
+
+        <!-- Steps -->
+        <div class="step-indicator">
+          <span class="step active" id="step1"><i class="fas fa-id-card"></i> 1. Identité</span>
+          <span class="step" id="step2"><i class="fas fa-calendar-alt"></i> 2. Disponibilité</span>
+          <span class="step" id="step3"><i class="fas fa-shield-alt"></i> 3. CNPS</span>
+          <span class="step" id="step4"><i class="fas fa-gavel"></i> 4. Engagement</span>
+        </div>
+
+        <!-- PAGE 1 -->
+        <div id="page1" class="form-page">
+          <div class="form-row">
+            <label class="required">Adresse Gmail (obligatoire pour correspondance)</label>
+            <input type="email" name="gmail" id="gmail" placeholder="exemple@gmail.com" required>
+            <small style="color:#3a7a5a;">Toutes les communications officielles seront envoyées sur cette adresse.</small>
+          </div>
+          <div class="form-row">
+            <label class="required">ID Employé / Matricule</label>
+            <input type="text" name="ID_employe" id="employerId" placeholder="Ex: PRT-2026-001" required>
+          </div>
+          <div class="form-row">
+            <label class="required">Nom complet</label>
+            <input type="text" name="nom" id="nom" placeholder="Votre nom de famille" required>
+          </div>
+          <div class="form-row">
+            <label class="required">Prénom</label>
+            <input type="text" name="prenom" id="prenom" placeholder="Votre prénom" required>
+          </div>
+          <div class="form-row">
+            <label class="required">Téléphone mobile (WhatsApp de préférence)</label>
+            <input type="tel" name="telephone" id="telephone" placeholder="+225 XX XX XX XX" required>
+          </div>
+          <div class="form-row">
+            <label>Personne à prévenir (urgence)</label>
+            <input type="text" name="urgence" id="urgence" placeholder="Nom et téléphone">
+          </div>
+        </div>
+
+        <!-- PAGE 2 -->
+        <div id="page2" class="form-page hidden">
+          <div class="form-row">
+            <label>Problème de santé (optionnel)</label>
+            <textarea name="sante" id="sante" rows="2" placeholder="À signaler pour votre sécurité"></textarea>
+          </div>
+          <div class="form-row">
+            <label class="required">Disponibilité pour commencer</label>
+            <input type="date" name="disponibilite" id="disponibilite" required>
+          </div>
+          <div class="form-row">
+            <label class="required">Ville d'affectation souhaitée</label>
+            <select name="ville_affectation" id="villeAffectation" required>
+              <option value="">-- Sélectionnez une ville --</option>
+              <option value="Abidjan">Abidjan</option>
+              <option value="Korhogo">Korhogo</option>
+              <option value="Petit Nassian">Petit Nassian</option>
+              <option value="Dabakala">Dabakala</option>
+              <option value="Bouaké">Bouaké</option>
+              <option value="Yamoussoukro">Yamoussoukro</option>
+              <option value="San Pedro">San Pedro</option>
+              <option value="Daloa">Daloa</option>
+              <option value="Bondoukou">Bondoukou</option>
+              <option value="Autre">Autre (précisez ci-dessous)</option>
+            </select>
+          </div>
+          <div id="autreVilleBlock" class="form-row hidden">
+            <label class="required">Précisez la ville</label>
+            <input type="text" name="autre_ville" id="autreVille" placeholder="Entrez le nom de la ville">
+          </div>
+          <div class="info-box">
+            <i class="fas fa-info-circle"></i> <strong>Indemnités de stage :</strong> 90 000 – 120 000 F CFA / mois · <strong>CDI :</strong> 150 000 – 400 000 F CFA selon profil.
+          </div>
+        </div>
+
+        <!-- PAGE 3 -->
+        <div id="page3" class="form-page hidden">
+          <div class="form-row">
+            <label class="required">Avez-vous déjà travaillé dans le secteur du BTP ? et Avez-vous une carte d'assurance sociale (CNPS) de PORTEO ?</label>
+            <div class="flex-group">
+              <label class="radio-option">
+                <input type="radio" name="cnps_statut" value="oui" id="cnpsOui"> Oui, je possède une carte CNPS valide
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="cnps_statut" value="non" id="cnpsNon"> Non, je n'ai pas encore de carte CNPS
+              </label>
+            </div>
+          </div>
+
+          <div id="cnpsOuiBlock" class="hidden">
+            <div class="form-row">
+              <label>Numéro CNPS (à 10 chiffres)</label>
+              <input type="text" name="cnps_numero" id="cnpsNumero" placeholder="Ex: 0123456789">
+              <div id="cnpsError" class="error-message hidden">
+                <i class="fas fa-exclamation-circle"></i> Numéro de carte invalide. Veuillez contacter le service CNPS.
+              </div>
+            </div>
+          </div>
+
+          <div id="cnpsNonBlock" class="hidden">
+            <div class="paiement-cadre">
+              <h4><i class="fas fa-shield-heart"></i> Pourquoi souscrire à la carte CNPS ?</h4>
+              <p>La <strong>Caisse Nationale de Prévoyance Sociale (CNPS)</strong> vous couvre en cas de maladie, accident du travail, maternité, retraite et prestations familiales. Avec la carte, vous êtes soigné gratuitement dans les centres partenaires. En Côte d'Ivoire, tout employé doit être affilié à la CNPS (loi n°99-477 du 02 août 1999, Code du travail).</p>
+              <div class="info-securite-sociale">
+                <i class="fas fa-check-circle"></i> <strong>Avantages :</strong> consultations gratuites, prise en charge hospitalière, indemnités journalières, pension d'invalidité.
+              </div>
+
+              <p style="margin-top: 1rem;">
+                <i class="fas fa-mobile-alt"></i> Pour obtenir votre carte CNPS, envoyez <strong>15 300 F CFA</strong> par <strong>Wave</strong> au numéro de Guichet Service :
+              </p>
+              <div class="numero-wave-container">
+                <span class="numero-wave" id="numeroWaveForm">0508268817</span>
+                <button class="btn-copier-wave" id="btnCopierWave">
+                  <i class="fas fa-copy"></i> Copier
+                </button>
+              </div>
+              <p style="margin-top: 0.5rem;">Après 24h vous recevrez votre carte par Gmail (PDF) à imprimer et à présenter lors de l'entretien d'embauche.</p>
+
+              <div class="file-upload-box" onclick="document.getElementById('paiementCapture').click();">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p style="font-weight:600; margin: 6px 0;">Cliquez pour joindre la capture du paiement (reçu Wave)</p>
+                <input type="file" name="paiement_capture" id="paiementCapture" accept="image/*,application/pdf" style="display:none;">
+                <span id="fileSelectedName" class="file-name">Aucun fichier sélectionné</span>
+              </div>
+              <p style="color:#1a7a5a;"><i class="far fa-clock"></i> Nous allons vous envoyer par Gmail la date à laquelle vous allez commencer le travail, une fois les frais de la carte payés.</p>
+              <br>
+              <p style="color:#b87a1a;"><i class="fas fa-building"></i> La carte CNPS est obligatoire pour tous les employés sélectionnés. Sans cela, vous ne pouvez pas accéder à nos chantiers.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAGE 4 -->
+        <div id="page4" class="form-page hidden">
+          <div style="background:#f0f8fc; border-radius:24px; padding:1.5rem; border-left: 4px solid #E80D2B;">
+            <h4 style="color:#0A73CE; font-family:'Montserrat',sans-serif;"><i class="fas fa-scale-balanced" style="color:#E80D2B;"></i> Références juridiques (Côte d'Ivoire)</h4>
+            <ul style="margin: 1rem 0 1rem 1.5rem; color: #1a4a5a;">
+              <li>Article 23.2 du Code du travail ivoirien : affiliation obligatoire à la CNPS.</li>
+              <li>Décret n°2010-187 : conditions d'obtention de la carte CNPS pour tout employé.</li>
+              <li>Convention collective du secteur du BTP : couverture maladie et accident.</li>
+              <li>Règlement intérieur PORTEO BTP : conformité sociale exigée.</li>
+            </ul>
+            <p style="margin-top:0.8rem;">Je certifie l'exactitude des informations fournies, et je m'engage à présenter les documents originaux lors de ma prise de fonction au sein de <strong>PORTEO BTP</strong>.</p>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation-buttons">
+          <button type="button" id="prevBtn" class="btn-nav" disabled><i class="fas fa-arrow-left"></i> Précédent</button>
+          <button type="button" id="nextBtn" class="btn-nav">Suivant <i class="fas fa-arrow-right"></i></button>
+          <button type="button" id="confirmBtn" class="btn-primary hidden">Confirmer mon enregistrement <i class="fas fa-check"></i></button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <span>© 2026 PORTEO BTP · Bâtiment & Travaux Publics · Côte d'Ivoire</span>
+      <span><i class="fas fa-shield" style="color:#FADD05;"></i> Conformité CNPS</span>
+      <span><a href="#">Mentions légales & RGPD</a></span>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPT ===== -->
+  <script>
+    (function () {
+      const congrats      = document.getElementById('congratsBlock');
+      const formContainer = document.getElementById('formContainer');
+      const showBtn       = document.getElementById('showFormBtn');
+      const prevBtn       = document.getElementById('prevBtn');
+      const nextBtn       = document.getElementById('nextBtn');
+      const confirmBtn    = document.getElementById('confirmBtn');
+      const loaderOverlay = document.getElementById('loaderOverlay');
+      const confirmationPage = document.getElementById('confirmationPage');
+
+      const page1 = document.getElementById('page1');
+      const page2 = document.getElementById('page2');
+      const page3 = document.getElementById('page3');
+      const page4 = document.getElementById('page4');
+      const step1 = document.getElementById('step1');
+      const step2 = document.getElementById('step2');
+      const step3 = document.getElementById('step3');
+      const step4 = document.getElementById('step4');
+
+      const cnpsOui      = document.getElementById('cnpsOui');
+      const cnpsNon      = document.getElementById('cnpsNon');
+      const ouiBlock     = document.getElementById('cnpsOuiBlock');
+      const nonBlock     = document.getElementById('cnpsNonBlock');
+      const fileInput    = document.getElementById('paiementCapture');
+      const fileNameSpan = document.getElementById('fileSelectedName');
+
+      const villeSelect  = document.getElementById('villeAffectation');
+      const autreVilleBlock = document.getElementById('autreVilleBlock');
+      const autreVilleInput = document.getElementById('autreVille');
+
+      let currentPage = 1;
+
+      // ===== BOUTON COPIER =====
+      const btnCopierWave = document.getElementById('btnCopierWave');
+      const numeroWaveForm = document.getElementById('numeroWaveForm');
+
+      btnCopierWave.addEventListener('click', function() {
+        const numero = numeroWaveForm.textContent.trim();
+        navigator.clipboard.writeText(numero).then(() => {
+          const originalHtml = this.innerHTML;
+          this.innerHTML = '<i class="fas fa-check"></i> Copié !';
+          this.classList.add('copie');
+          setTimeout(() => {
+            this.innerHTML = originalHtml;
+            this.classList.remove('copie');
+          }, 2000);
+        }).catch(() => {
+          const range = document.createRange();
+          range.selectNode(numeroWaveForm);
+          window.getSelection().removeAllRanges();
+          window.getSelection().addRange(range);
+          document.execCommand('copy');
+          window.getSelection().removeAllRanges();
+          const originalHtml = this.innerHTML;
+          this.innerHTML = '<i class="fas fa-check"></i> Copié !';
+          this.classList.add('copie');
+          setTimeout(() => {
+            this.innerHTML = originalHtml;
+            this.classList.remove('copie');
+          }, 2000);
+        });
+      });
+
+      showBtn.addEventListener('click', () => {
+        congrats.style.display = 'none';
+        formContainer.classList.remove('hidden');
+        updatePage();
+      });
+
+      villeSelect.addEventListener('change', function () {
+        if (this.value === 'Autre') {
+          autreVilleBlock.classList.remove('hidden');
+          autreVilleInput.setAttribute('required', 'required');
+        } else {
+          autreVilleBlock.classList.add('hidden');
+          autreVilleInput.removeAttribute('required');
+          autreVilleInput.value = '';
+        }
+      });
+
+      function toggleCnps() {
+        if (cnpsOui.checked) {
+          ouiBlock.classList.remove('hidden');
+          nonBlock.classList.add('hidden');
+        } else if (cnpsNon.checked) {
+          ouiBlock.classList.add('hidden');
+          nonBlock.classList.remove('hidden');
+        } else {
+          ouiBlock.classList.add('hidden');
+          nonBlock.classList.add('hidden');
+        }
+      }
+      cnpsOui.addEventListener('change', toggleCnps);
+      cnpsNon.addEventListener('change', toggleCnps);
+
+      if (fileInput) {
+        fileInput.addEventListener('change', function () {
+          fileNameSpan.textContent = this.files.length > 0 ? this.files[0].name : 'Aucun fichier sélectionné';
+        });
+      }
+
+      function validatePage(page) {
+        if (page === 1) {
+          const gmail  = document.getElementById('gmail').value.trim();
+          const id     = document.getElementById('employerId').value.trim();
+          const nom    = document.getElementById('nom').value.trim();
+          const prenom = document.getElementById('prenom').value.trim();
+          const tel    = document.getElementById('telephone').value.trim();
+          if (!gmail || !id || !nom || !prenom || !tel) {
+            alert('Veuillez remplir tous les champs obligatoires (Gmail, ID, nom, prénom, téléphone).');
+            return false;
+          }
+          if (!gmail.includes('@') || !gmail.includes('.')) {
+            alert('Veuillez entrer une adresse Gmail valide (ex: nom@gmail.com).');
+            return false;
+          }
+        }
+        if (page === 2) {
+          if (!document.getElementById('disponibilite').value) {
+            alert('Sélectionnez votre date de disponibilité.');
+            return false;
+          }
+          const ville = villeSelect.value;
+          if (!ville) {
+            alert('Veuillez sélectionner une ville d\'affectation.');
+            return false;
+          }
+          if (ville === 'Autre') {
+            const autre = autreVilleInput.value.trim();
+            if (!autre) {
+              alert('Veuillez préciser le nom de la ville.');
+              return false;
+            }
+          }
+        }
+        if (page === 3) {
+          if (!cnpsOui.checked && !cnpsNon.checked) {
+            alert('Veuillez indiquer si vous possédez une carte CNPS.');
+            return false;
+          }
+          if (cnpsOui.checked) {
+            const num = document.getElementById('cnpsNumero').value.trim();
+            if (num === '') {
+              alert('Veuillez entrer votre numéro de carte CNPS.');
+              return false;
+            } else {
+              alert('Numéro de carte invalide. Vérifiez votre numéro CNPS ou contactez le service RH.');
+              return false;
+            }
+          }
+          if (cnpsNon.checked && (!fileInput || fileInput.files.length === 0)) {
+            alert('Vous devez joindre la capture du paiement de 15 300 F CFA pour obtenir votre carte CNPS.');
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function updatePage() {
+        [page1, page2, page3, page4].forEach(p => p.classList.add('hidden'));
+        [step1, step2, step3, step4].forEach(s => s.classList.remove('active'));
+
+        if (currentPage === 1) { page1.classList.remove('hidden'); step1.classList.add('active'); }
+        if (currentPage === 2) { page2.classList.remove('hidden'); step2.classList.add('active'); }
+        if (currentPage === 3) { page3.classList.remove('hidden'); step3.classList.add('active'); }
+        if (currentPage === 4) { page4.classList.remove('hidden'); step4.classList.add('active'); }
+
+        prevBtn.disabled = (currentPage === 1);
+        if (currentPage === 4) {
+          nextBtn.classList.add('hidden');
+          confirmBtn.classList.remove('hidden');
+        } else {
+          nextBtn.classList.remove('hidden');
+          confirmBtn.classList.add('hidden');
+        }
+      }
+
+      nextBtn.addEventListener('click', () => {
+        if (validatePage(currentPage) && currentPage < 4) {
+          currentPage++;
+          updatePage();
+        }
+      });
+
+      prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          updatePage();
+        }
+      });
+
+      function showConfirmation(nom, prenom) {
+        const msg = document.getElementById('confirmMessage');
+        if (nom && prenom) {
+          msg.innerHTML = ` ${prenom} ${nom}, votre dossier a bien été transmis à la Direction des RH de PORTEO BTP`;
+        } else {
+          msg.innerHTML = 'Votre dossier a bien été transmis à la Direction des RH de PORTEO BTP';
+        }
+        confirmationPage.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      window.closeConfirmation = function() {
+        confirmationPage.classList.remove('active');
+        document.body.style.overflow = '';
+        currentPage = 1;
+        updatePage();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
+      window.retourAccueil = function() {
+        confirmationPage.classList.remove('active');
+        document.body.style.overflow = '';
+        location.reload();
+      };
+
+      confirmBtn.addEventListener('click', () => {
+        const nom = document.getElementById('nom').value.trim();
+        const prenom = document.getElementById('prenom').value.trim();
+
+        confirmBtn.disabled = true;
+        confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours…';
+
+        loaderOverlay.classList.remove('hidden');
+
+        setTimeout(() => {
+          loaderOverlay.classList.add('hidden');
+          showConfirmation(nom, prenom);
+          confirmBtn.disabled = false;
+          confirmBtn.innerHTML = 'Confirmer mon enregistrement <i class="fas fa-check"></i>';
+        }, 3000);
+      });
+
+      const cnpsNumero = document.getElementById('cnpsNumero');
+      const cnpsError  = document.getElementById('cnpsError');
+      if (cnpsNumero) {
+        cnpsNumero.addEventListener('input', function () {
+          const hasVal = this.value.trim() !== '';
+          cnpsError.classList.toggle('hidden', !hasVal);
+          this.classList.toggle('input-error', hasVal);
+        });
+      }
+
+      updatePage();
+      toggleCnps();
+    })();
+  </script>
+
+</body>
+</html>
